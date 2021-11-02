@@ -108,3 +108,19 @@ print(tandemBicycle([1, 7, 8], [2, 5, 6], True))
 print(tandemBicycle([1, 7, 8], [2, 5, 6], False))
 
 # Number 13
+# This is an input class. Do not edit.
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+def removeDuplicatesFromLinkedList(linkedList):
+    runner = linkedList
+    while runner.next is not None:
+        if runner.value == runner.next.value:
+            temp= runner.next.next
+            runner.next = temp
+        else:
+            runner= runner.next
+    return linkedList
