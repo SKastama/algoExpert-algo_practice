@@ -146,3 +146,22 @@ def productSum(array, multplier = 1):
 		else: 
 			pdtSum+= i
 	return pdtSum * multplier
+
+# Number 16
+import math
+def binarySearch(array, target):
+	return binarySearchCall(array, target, 0, len(array) - 1)
+	
+def binarySearchCall(array, target, left, right):
+	if left > right:
+		return -1
+	midpoint= math.floor((left + right)// 2)
+	if array[midpoint] == target:
+		return midpoint
+	elif array[midpoint] < target:
+		left= midpoint + 1
+		return binarySearchCall(array, target, left, right)
+	else:
+		right= midpoint - 1
+		return binarySearchCall(array, target, left, right)
+
