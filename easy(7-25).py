@@ -165,3 +165,30 @@ def binarySearchCall(array, target, left, right):
 		right= midpoint - 1
 		return binarySearchCall(array, target, left, right)
 
+# Number 17
+def findThreeLargestNumbers(array):
+    largest= [float('-inf'), float('-inf'), float('-inf')]
+    for i in range(len(array)):
+        if array[i] > largest[0] and array[i] <= largest[1]:
+            largest[0]= array[i]
+        elif array[i] > largest[1] and array[i] <= largest[2]:
+            largest[0]= largest[1]
+            largest[1]= array[i]
+        elif array[i] > largest[2]:
+            largest[0]= largest[1]
+            largest[1]= largest[2]
+            largest[2]= array[i]
+    return largest
+# print(findThreeLargestNumbers([141, -22, 100, 180, 99, 122]))
+
+# Number 18
+def bubbleSort(array):
+    nums= array
+    for i in range(len(nums)):
+        for j in range(len(nums) - 1 - i):
+            if nums[j] > nums[j+1]:
+                nums[j],nums[j+1] = nums[j+1],nums[j]
+    return nums
+
+# Number 19
+
