@@ -191,4 +191,16 @@ def bubbleSort(array):
     return nums
 
 # Number 19
+def insertionSort(array):
+    for i in range(1, len(array)):
+        current= array[i]
+        j= i-1
+        while current < array[j] and j >= 0:
+            array[j+1]= array[j]
+            j-= 1
+        array[j+1]= current
+    return array
+# print(insertionSort([3, 5, 2, 8]))
+
+# Number 20
 
