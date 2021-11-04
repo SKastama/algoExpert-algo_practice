@@ -203,4 +203,25 @@ def insertionSort(array):
 # print(insertionSort([3, 5, 2, 8]))
 
 # Number 20
+def selectionSort(array):
+	pos= 0
+	while pos < len(array)-1:
+		smallPos= pos
+		for i in range(pos + 1, len(array)):
+			if array[i] < array[smallPos]:
+				smallPos= i
+		array[pos], array[smallPos] = array[smallPos], array[pos]
+		pos+= 1
+	return array
 
+# Number 21
+import math
+def isPalindrome(string):
+    halfString= int(math.floor(len(string)/2))
+    for i in range(halfString):
+        if string[i] != string[len(string) - 1 - i]:
+            return False
+    return True
+# print(isPalindrome("abccba"))
+
+# Number 22
