@@ -225,3 +225,18 @@ def isPalindrome(string):
 # print(isPalindrome("abccba"))
 
 # Number 22
+alphabet={
+		"1":"a", "2":"b", "3":"c", "4":"d", "5":"e", "6":"f", "7":"g", "8":"h", "9":"i", "10":"j", "11":"k",
+		"12":"l", "13":"m", "14":"n", "15":"o", "16":"p", "17":"q", "18":"r", "19":"s", "20":"t", "21":"u",
+		"22":"v", "23":"w", "24":"x", "25":"y", "26":"z"
+}
+def caesarCipherEncryptor(string, key):
+    alphabet="abcdefghijklmnopqrstuvwxyz"
+    for i in range(len(string)):
+        for j in range(len(alphabet)):
+            if string[i] == alphabet[j]:
+                pos= (j+ key) % 26
+                string[i]= string[pos]
+    return string
+print(caesarCipherEncryptor("abc", 2))
+
