@@ -231,12 +231,15 @@ alphabet={
 		"22":"v", "23":"w", "24":"x", "25":"y", "26":"z"
 }
 def caesarCipherEncryptor(string, key):
-    alphabet="abcdefghijklmnopqrstuvwxyz"
-    for i in range(len(string)):
-        for j in range(len(alphabet)):
-            if string[i] == alphabet[j]:
-                pos= (j+ key) % 26
-                string[i]= string[pos]
-    return string
+	newLetters = []
+	newKey = key % 26
+	for letter in string:
+		newLetters.append(getNewLetter(letter, newKey))
+	return "".join(newLetters)
+
+def getNewLetter(letter, key):
+	newLetterCode = ord(letter) + key
+	return chr(newLetterCode) if newLetterCode <= 122 else chr(96 + newLetterCode % 122)
+
 print(caesarCipherEncryptor("abc", 2))
 
