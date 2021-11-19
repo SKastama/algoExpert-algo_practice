@@ -243,3 +243,19 @@ def getNewLetter(letter, key):
 
 print(caesarCipherEncryptor("abc", 9))
 
+# Number 23
+def runLengthEncoding(string):
+    stringCharacters= []
+    currentLength= 1
+    for i in range(1, len(string)):
+        currentChar= string[i]
+        prevChar= string[i - 1]
+        if currentChar != prevChar or currentLength == 9:
+            stringCharacters.append(str(currentLength))
+            stringCharacters.append(str(prevChar))
+            currentLength= 0
+        currentLength+= 1
+    stringCharacters.append(str(currentLength))
+    stringCharacters.append(string[len(string) - 1])
+    return "".join(stringCharacters)
+
