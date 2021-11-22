@@ -241,7 +241,7 @@ def getNewLetter(letter, key):
 	newLetterCode = ord(letter) + key
 	return chr(newLetterCode) if newLetterCode <= 122 else chr(96 + newLetterCode % 122)
 
-print(caesarCipherEncryptor("abc", 9))
+# print(caesarCipherEncryptor("abc", 9))
 
 # Number 23
 def runLengthEncoding(string):
