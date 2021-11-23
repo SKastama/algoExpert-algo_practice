@@ -260,5 +260,26 @@ def runLengthEncoding(string):
     output.append(string[len(string) - 1])
     return "".join(output)
 
-print(runLengthEncoding("AAAAAAAAAAAAAAAABBCCCC"))
+# print(runLengthEncoding("AAAAAAAAAAAAAAAABBCCCC"))
 
+# Number 24
+def generateDocument(characters, document):
+    charDict= {}
+    docDict= {}
+    for i in characters:
+        if i not in charDict:
+            charDict[i]= 0
+        if i in charDict:
+            charDict[i]+= 1
+    for i in document:
+        if i not in docDict:
+            docDict[i]= 0
+        if i in docDict:
+            docDict[i]+= 1
+    for key, val in docDict.items():
+        if key not in charDict or val > charDict[key]:
+            return False
+    return True
+
+print(generateDocument("Bste!hetsi ogEAxpelrt x ", "AlgoExpert is the Best!"))
+print(generateDocument("aabc ", "baac  "))
