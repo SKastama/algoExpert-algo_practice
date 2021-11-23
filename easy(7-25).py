@@ -245,17 +245,20 @@ def getNewLetter(letter, key):
 
 # Number 23
 def runLengthEncoding(string):
-    stringCharacters= []
-    currentLength= 1
-    for i in range(1, len(string)):
-        currentChar= string[i]
-        prevChar= string[i - 1]
-        if currentChar != prevChar or currentLength == 9:
-            stringCharacters.append(str(currentLength))
-            stringCharacters.append(str(prevChar))
-            currentLength= 0
-        currentLength+= 1
-    stringCharacters.append(str(currentLength))
-    stringCharacters.append(string[len(string) - 1])
-    return "".join(stringCharacters)
+    output= []
+    count= 0
+    for i in range(len(string) - 1):
+        print(string[i])
+        if string[i] != string[i+1] or count == 9:
+            count= str(count)
+            output.append(count)
+            output.append(string[i])
+            count= 0
+        count+= 1
+    count= str(count)
+    output.append(count)
+    output.append(string[len(string) - 1])
+    return "".join(output)
+
+print(runLengthEncoding("AAAAAAAAAAABBCCCC"))
 
