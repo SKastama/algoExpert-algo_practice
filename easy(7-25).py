@@ -246,7 +246,7 @@ def getNewLetter(letter, key):
 # Number 23
 def runLengthEncoding(string):
     output= []
-    count= 0
+    count= 1
     for i in range(len(string) - 1):
         print(string[i])
         if string[i] != string[i+1] or count == 9:
@@ -260,5 +260,5 @@ def runLengthEncoding(string):
     output.append(string[len(string) - 1])
     return "".join(output)
 
-print(runLengthEncoding("AAAAAAAAAAABBCCCC"))
+print(runLengthEncoding("AAAAAAAAAAAAAAAABBCCCC"))
 
