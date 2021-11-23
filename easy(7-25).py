@@ -281,5 +281,18 @@ def generateDocument(characters, document):
             return False
     return True
 
-print(generateDocument("Bste!hetsi ogEAxpelrt x ", "AlgoExpert is the Best!"))
-print(generateDocument("aabc ", "baac  "))
+# print(generateDocument("Bste!hetsi ogEAxpelrt x ", "AlgoExpert is the Best!"))
+# print(generateDocument("aabc ", "baac  "))
+
+# Number 25
+def firstNonRepeatingCharacter(string):
+    char= {}
+    for i in range(len(string)):
+        if string[i] not in char:
+            char[string[i]]= [i, 0]
+        char[string[i]][1]+= 1
+    for val in char.values():
+        if val[1] == 1:
+            return val[0]
+    return -1
+print(firstNonRepeatingCharacter("aabbcccc"))
