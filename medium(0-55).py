@@ -20,7 +20,8 @@ def threeNumberSum(array, targetSum):
 
 # print(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0))
 
-# Number 2
+
+# Number 2- Uncompleted
 def smallestDifference(arrayOne, arrayTwo):
     output= float('inf')
     arrayOne.sort()
@@ -40,7 +41,24 @@ def smallestDifference(arrayOne, arrayTwo):
             pointerTwo+= 1
     return output
 
-print(smallestDifference([1, 3, 6, 9, 10], [16, 8, -4, 19]))
+# print(smallestDifference([1, 3, 6, 9], [8, -4, 11]))
 
 
+# Number 3
+def moveElementToEnd(array, toMove):
+    pointOne= 0
+    pointTwo= len(array) - 1
+    while pointOne < pointTwo:
+        if array[pointTwo] == toMove:
+            pointTwo-= 1
+            continue
+        if array[pointOne] == toMove:
+            temp= array[pointOne]
+            array[pointOne]= array[pointTwo]
+            array[pointTwo]= temp
+            pointTwo-= 1
+        pointOne+= 1
+    return array
+
+print(moveElementToEnd([2, 4, 2, 5, 6, 2, 2], 2))
 
