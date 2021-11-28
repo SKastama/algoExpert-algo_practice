@@ -60,5 +60,40 @@ def moveElementToEnd(array, toMove):
         pointOne+= 1
     return array
 
-print(moveElementToEnd([2, 4, 2, 5, 6, 2, 2], 2))
+# print(moveElementToEnd([2, 4, 2, 5, 6, 2, 2], 2))
+
+# Number 4
+def isMonotonic(array):
+    # if len(array) <= 1:
+    #     return True
+    # for i in range(1, len(array)):
+    #     if array[i] == array[i - 1]:
+    #         continue
+    #     elif array[i] > array[i - 1]:
+    #         trend= "Increase"
+    #         break
+    #     elif array[i] < array[i - 1]:
+    #         trend= "Decrease"
+    #         break
+    # for i in range(1, len(array)):
+    #     if array[i] == array[i - 1]:
+    #         continue
+    #     if array[i] > array[i - 1] and trend != "Increase":
+    #         return False
+    #     if array[i] < array[i - 1] and trend != "Decrease":
+    #         return False
+    # return True 
+
+    # Smarter way
+    NonDecreasing= True
+    NonIncreasing= True
+    for i in range(1, len(array)):
+        if array[i] < array[i - 1]:
+            NonDecreasing= False
+        if array[i] > array[i - 1]:
+            NonIncreasing= False
+    return NonDecreasing or NonIncreasing
+
+print(isMonotonic([-1, -1, -2, -3, -4, -5, -5, -5, -6, -7, -8, -8, -9, -10, -11]))
+
 
