@@ -160,7 +160,8 @@ data2= [
 
 
 # Number 7
-def arrayOfProducts(array):
+# O(n^2) time complexity solution
+def arrayOfProducts1(array):
     output= []
     for i in range(len(array)):
         product= 1
@@ -170,4 +171,20 @@ def arrayOfProducts(array):
             product*= array[j]
         output.append(product)
     return output
-print(arrayOfProducts([3, 1, 2]))
+
+# print(arrayOfProducts1([3, 1, 2]))
+
+
+# Number 8
+def firstDuplicateValue(array):
+    numberCount= set()
+    for i in range(len(array)):
+        if array[i] in numberCount:
+            return array[i]
+        numberCount.add(array[i])
+    return -1
+
+print(firstDuplicateValue([7, 4, 2, 7, 5, 3, 2]))
+
+
+
