@@ -145,7 +145,7 @@ data2= [
 
 
 # Number 6
-def longestPeak(array):
+# def longestPeak(array):
     # First find all peaks
 #     maxPeak= 0
 #     i = 0
@@ -159,3 +159,15 @@ def longestPeak(array):
 # print(longestPeak([1, 2, 3, 0, -1, 4, 2, 9, 1]))
 
 
+# Number 7
+def arrayOfProducts(array):
+    output= []
+    for i in range(len(array)):
+        product= 1
+        for j in range(len(array)):
+            if j == i:
+                continue
+            product*= array[j]
+        output.append(product)
+    return output
+print(arrayOfProducts([3, 1, 2]))
