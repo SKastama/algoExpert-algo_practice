@@ -141,6 +141,21 @@ data2= [
     [9,  8,  7],
 ]
 
-print(spiralTraverse(data2))
+# print(spiralTraverse(data2))
+
+
+# Number 6
+def longestPeak(array):
+    # First find all peaks
+#     maxPeak= 0
+#     i = 0
+#     while i < len(array):
+#         if array[i] > array[i-1] and array[i] > array[i+1]:
+            
+    
+
+#     # Then find longest peak
+
+# print(longestPeak([1, 2, 3, 0, -1, 4, 2, 9, 1]))
 
 
