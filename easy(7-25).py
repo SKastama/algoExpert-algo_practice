@@ -1,5 +1,29 @@
+# Number 6
+def findClosestValueInBst(tree, target):
+    root= tree
+    closest= float('inf')
+    while root is not None:
+        if root.value == target:
+            return root.value
+        if abs(root.value - target) < closest:
+            closest= abs(root.value - target)
+            val= root.value
+        if root.value < target:
+            root= root.right
+        elif root.value > target:
+            root= root.left
+    return val
+
+
+
+# This is the class of the input tree. Do not edit.
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
 # Number 7
-# This is the class of the input root. Do not edit it.
 class BinaryTree:
     def __init__(self, value):
         self.value = value

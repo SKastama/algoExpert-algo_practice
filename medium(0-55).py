@@ -41,6 +41,8 @@ def smallestDifference(arrayOne, arrayTwo):
             pointerTwo+= 1
     return output
 
+    
+
 # print(smallestDifference([1, 3, 6, 9], [8, -4, 11]))
 
 
@@ -184,7 +186,12 @@ def firstDuplicateValue(array):
         numberCount.add(array[i])
     return -1
 
-print(firstDuplicateValue([7, 4, 2, 7, 5, 3, 2]))
+# print(firstDuplicateValue([7, 4, 2, 7, 5, 3, 2]))
+
+
+# Number 9
+# def mergeOverlappingIntervals(intervals):
+    
 
 
 
