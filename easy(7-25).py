@@ -15,14 +15,6 @@ def findClosestValueInBst(tree, target):
     return val
 
 
-
-# This is the class of the input tree. Do not edit.
-class BST:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
-
 # Number 7
 class BinaryTree:
     def __init__(self, value):
@@ -31,20 +23,17 @@ class BinaryTree:
         self.right = None
 
 def branchSums(root):
-	sums= []
-	branchSumsCall(root, 0, sums)
-	return sums
-		
-def branchSumsCall(root, runningSum, sums):
-    if (root == None):
-        return 
+    sums= []
+    branchSumsCall(root, sums, 0)
+    return sums
+
+def branchSumsCall(root, sums, runningSum):
     runningSum += root.value
     if (root.left == None and root.right == None):
         sums.append(runningSum)
         return 
-
-    branchSumsCall(root.left, runningSum, sums)
-    branchSumsCall(root.right, runningSum, sums)
+    branchSumsCall(root.left, sums, runningSum)
+    branchSumsCall(root.right, sums, runningSum)
 
 # Number 8
 def nodeDepths(node, depth = 0):
