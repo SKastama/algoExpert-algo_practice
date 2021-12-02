@@ -194,7 +194,7 @@ def longestPeak(array):
     return longestPeak
 
 
-print(longestPeak([1, 2, 2, -2, -1, 4, 2, 1, 0, -1, 9, 1]))
+# print(longestPeak([1, 2, 2, -2, -1, 4, 2, 1, 0, -1, 9, 1]))
 
 
 # Number 7
@@ -226,8 +226,20 @@ def firstDuplicateValue(array):
 
 
 # Number 9
-# def mergeOverlappingIntervals(intervals):
-    
+def mergeOverlappingIntervals(intervals):
+    intervals.sort()
+    pos= 0
+    while pos < len(intervals) - 1:
+        if intervals[pos][1] >= intervals[pos+1][0]:
+            intervals[pos][1]= max(intervals[pos][1], intervals[pos+1][1])
+            intervals.pop(pos+1)
+        else:
+            pos+= 1
+    return intervals
+
+# print(mergeOverlappingIntervals([[1, 2], [3, 5], [4, 7], [6, 8], [9, 10]]))
+# print(mergeOverlappingIntervals([[1, 22], [-20, 30]]))
+
 
 
 
