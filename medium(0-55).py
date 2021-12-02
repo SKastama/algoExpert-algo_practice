@@ -241,5 +241,53 @@ def mergeOverlappingIntervals(intervals):
 # print(mergeOverlappingIntervals([[1, 22], [-20, 30]]))
 
 
+# Number 10
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+    def insert(self, value):
+        current= self
+        while True:
+            if current.value > value:
+                if current.left is None:
+                    current.left= BST(value)
+                    break
+                else:
+                    current= current.left
+            else:
+                if current.right is None:
+                    current.right= BST(value)
+                    break
+                else:
+                    current= current.right
+        return self
+
+    def contains(self, value):
+        current= self
+        while current is not None:
+            if current.value > value:
+                current= current.left
+            elif current.value < value:
+                current= current.right
+            else:
+                return True
+        return False
+
+    def remove(self, value):
+        current= self
+        while current is not None:
+            if current.value == value:
+                current.pop()
+                break
+            elif current.value > value:
+                current= current.left
+            elif current.value < value:
+                current= current.right
+        # Do not edit the return statement of this method.
+        return self
+
 
 
