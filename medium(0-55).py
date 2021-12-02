@@ -21,29 +21,30 @@ def threeNumberSum(array, targetSum):
 # print(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0))
 
 
-# Number 2- Uncompleted
+# Number 2
 def smallestDifference(arrayOne, arrayTwo):
-    output= float('inf')
+    output= []
+    absVal= float('inf')
     arrayOne.sort()
     arrayTwo.sort()
-    pointerOne= 0
-    pointerTwo= 0
-    while pointerOne < len(arrayOne) and pointerTwo < len(arrayTwo):
-        absDif= abs(arrayOne[pointerOne] - arrayTwo[pointerTwo])
-        if absDif == 0:
-            output= [arrayOne[pointerOne], arrayTwo[pointerTwo]]
+    point1= 0
+    point2= 0
+    while point1 < len(arrayOne) and point2 < len(arrayTwo):
+        if arrayOne[point1] == arrayTwo[point2]:
+            output= [arrayOne[point1], arrayTwo[point2]]
             break
-        elif absDif < output:
-            output= [arrayOne[pointerOne], arrayTwo[pointerTwo]]
-        if arrayOne[pointerOne] < arrayTwo[pointerTwo]:
-            pointerOne+= 1
-        else:
-            pointerTwo+= 1
+        absValTemp= abs(arrayOne[point1]- arrayTwo[point2])
+        if absValTemp < absVal:
+            absVal= absValTemp
+            output= [arrayOne[point1], arrayTwo[point2]]
+        if arrayOne[point1] < arrayTwo[point2]:
+            point1+= 1
+            continue
+        elif arrayOne[point1] > arrayTwo[point2]:
+            point2+= 1
     return output
 
-    
-
-# print(smallestDifference([1, 3, 6, 9], [8, -4, 11]))
+print(smallestDifference([1, -3, 6, 7], [8, -4, 11]))
 
 
 # Number 3
