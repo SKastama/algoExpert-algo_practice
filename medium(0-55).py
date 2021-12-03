@@ -289,12 +289,43 @@ class BST:
         # Do not edit the return statement of this method.
         return self
 
-# Number 20
-def maxSubsetSumNoAdjacent(array):
-    largestSum= 0
-    i= 0
-    j= i
-    while True:
-        if array[j] == array[i-1]:
-            j-= 1
+
+# Number 20.1
+def maxSubsetSumNoAdjacent1(array):
+    if len(array) == 0:
+        return 0
+    elif len(array) == 1:
+        return array[0]
+    maxSums= []
+    maxSums.append(array[0])
+    maxSums.append(max(array[0], array[1]))
+    i= 2
+    while i < len(array):
+        currentSum= maxSums[i-2] + array[i]
+        if maxSums[i-1] < currentSum:
+            maxSums.append(currentSum)
+        else:
+            maxSums.append(maxSums[i-1])
+        i+= 1
+    largestSum= max(maxSums)
+    return largestSum
+
+# Number 20.2
+def maxSubsetSumNoAdjacent2(array):
+    if len(array) == 0:
+        return 0
+    elif len(array) == 1:
+        return array[0]
+    minus1Sum= max(array[0], array[1])
+    minus2Sum= array[0]
+    i= 2
+    while i < len(array):
+        currentSum= minus2Sum + array[i]
+        minus2Sum= minus1Sum
+        if minus1Sum < currentSum:
+            minus1Sum= currentSum
+        i+= 1
+    return minus1Sum
+
+print(maxSubsetSumNoAdjacent2([7, 10, 12, 7, 9, 14]))
 
