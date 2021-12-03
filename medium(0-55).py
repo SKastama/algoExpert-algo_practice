@@ -241,7 +241,7 @@ def mergeOverlappingIntervals(intervals):
 # print(mergeOverlappingIntervals([[1, 22], [-20, 30]]))
 
 
-# Number 10
+# Number 10- Uncompleted
 class BST:
     def __init__(self, value):
         self.value = value
@@ -289,5 +289,12 @@ class BST:
         # Do not edit the return statement of this method.
         return self
 
-
+# Number 20
+def maxSubsetSumNoAdjacent(array):
+    largestSum= 0
+    i= 0
+    j= i
+    while True:
+        if array[j] == array[i-1]:
+            j-= 1
 
