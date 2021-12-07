@@ -149,47 +149,47 @@ data2= [
 
 # Number 6
 def longestPeak(array):
-    # longestPeak= 0
-    # count= 0
-    # for i in range(1, len(array) - 1):
-    #     if array[i] > array[i-1] and array[i] > array[i+1]:
-    #         count+= 1
-    #         idxL= i
-    #         while idxL > 0:
-    #             if array[idxL] > array[idxL - 1]:
-    #                 count+= 1
-    #                 idxL-= 1
-    #             else:
-    #                 break
-    #         idxR= i
-    #         while idxR < len(array) - 1:
-    #             if array[idxR] > array[idxR + 1]:
-    #                 count+= 1
-    #                 idxR+= 1
-    #             else:
-    #                 break
-    #     if count > longestPeak:
-    #         longestPeak= count
-    #     else:
-    #         count= 0
-    
     longestPeak= 0
-    idx= 1
-    while idx < len(array) - 1:
-        aPeak= array[idx] > array[idx-1] and array[idx] > array[idx+1]
-        if not aPeak:
-            idx+= 1
-            continue
+    count= 0
+    for i in range(1, len(array) - 1):
+        if array[i] > array[i-1] and array[i] > array[i+1]:
+            count+= 1
+            idxL= i
+            while idxL > 0:
+                if array[idxL] > array[idxL - 1]:
+                    count+= 1
+                    idxL-= 1
+                else:
+                    break
+            idxR= i
+            while idxR < len(array) - 1:
+                if array[idxR] > array[idxR + 1]:
+                    count+= 1
+                    idxR+= 1
+                else:
+                    break
+        if count > longestPeak:
+            longestPeak= count
+        else:
+            count= 0
+    
+    # longestPeak= 0
+    # idx= 1
+    # while idx < len(array) - 1:
+    #     aPeak= array[idx] > array[idx-1] and array[idx] > array[idx+1]
+    #     if not aPeak:
+    #         idx+= 1
+    #         continue
             
-        idxL= idx
-        while idxL >= 0 and array[idxL] > array[idxL - 1]:
-            idxL-= 1
-        idxR= idx
-        while idxR < len(array) - 1 and array[idxR] > array[idxR + 1]:
-            idxR+= 1
-        currentPeak= idxR - idxL + 1
-        longestPeak= max(longestPeak, currentPeak)
-        idx= idxR
+    #     idxL= idx
+    #     while idxL >= 0 and array[idxL] > array[idxL - 1]:
+    #         idxL-= 1
+    #     idxR= idx
+    #     while idxR < len(array) - 1 and array[idxR] > array[idxR + 1]:
+    #         idxR+= 1
+    #     currentPeak= idxR - idxL + 1
+    #     longestPeak= max(longestPeak, currentPeak)
+    #     idx= idxR
 
     return longestPeak
 
