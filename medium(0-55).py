@@ -278,14 +278,30 @@ class BST:
 
     def remove(self, value):
         current= self
+        parent= current
         while current is not None:
-            if current.value == value:
-                current.pop()
-                break
-            elif current.value > value:
+            if current.value > value:
+                parent= current
                 current= current.left
             elif current.value < value:
+                parent= current
                 current= current.right
+            else:
+                break
+        if current.left is None and current.right is None:
+            current= None
+        elif current.right is None:
+            current.value= current.left.value
+            current.left= None
+        elif current.left is None:
+            current.value= current.right.value
+            current.right= None
+        else:
+            bottomRight= current.right
+            while bottomRight.left is not None:
+                bottomRight= bottomRight.left
+            current.value= bottomRight.value
+            bottomRight.remove()
         # Do not edit the return statement of this method.
         return self
 
@@ -329,16 +345,6 @@ def maxSubsetSumNoAdjacent2(array):
 
 # print(maxSubsetSumNoAdjacent2([7, 10, 12, 7, 9, 14]))
 
-
-# Number 21
-def numberOfWaysToMakeChange(n, denoms):
-    ways= [0 for amount in range(n+1)]
-    ways[0]= 1
-    for denom in denoms:
-        for amount in range(1, n+1):
-            if denom <= amount:
-                ways[amount] += ways[amount - denom]
-    return ways[n]
 
 
 
