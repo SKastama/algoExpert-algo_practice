@@ -306,6 +306,22 @@ class BST:
         return self
 
 
+# Number 11
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def validateBst(tree, minimum= float('-inf'), maximum= float('inf')):
+    if tree is None:
+        return True
+    if tree.value < minimum or tree.value >= maximum:
+        return False
+    return validateBst(tree.left, minimum, tree.value) and validateBst(tree.right, tree.value, maximum)
+
+
+
 # Number 20.1
 def maxSubsetSumNoAdjacent1(array):
     if len(array) == 0:
