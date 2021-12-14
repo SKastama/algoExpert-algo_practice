@@ -1,3 +1,5 @@
+import math
+
 # Number 1
 def threeNumberSum(array, targetSum):
     array.sort()
@@ -346,7 +348,31 @@ def postOrderTraverse(tree, array=[]):
 
 
 # Number 13
+def minHeightBst(array):
+    midpoint= math.floor(array.length/2)
 
+    while True:
+        # insert(array[midpoint])
+        pass
+
+
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+    def insert(self, value):
+        if value < self.value:
+            if self.left is None:
+                self.left = BST(value)
+            else:
+                self.left.insert(value)
+        else:
+            if self.right is None:
+                self.right = BST(value)
+            else:
+                self.right.insert(value)
 
 
 # Number 20.1
