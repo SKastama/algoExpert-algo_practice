@@ -321,6 +321,33 @@ def validateBst(tree, minimum= float('-inf'), maximum= float('inf')):
     return validateBst(tree.left, minimum, tree.value) and validateBst(tree.right, tree.value, maximum)
 
 
+# Number 12
+def inOrderTraverse(tree, array=[]):
+    if (tree is None):
+        return array
+    inOrderTraverse(tree.left, array)
+    array.append(tree.value)
+    return inOrderTraverse(tree.right, array)
+
+def preOrderTraverse(tree, array=[]):
+    if (tree is None):
+        return array
+    array.append(tree.value)
+    preOrderTraverse(tree.left, array)
+    return preOrderTraverse(tree.right, array)
+
+def postOrderTraverse(tree, array=[]):
+    if (tree is None):
+        return array
+    postOrderTraverse(tree.left, array)
+    postOrderTraverse(tree.right, array)
+    array.append(tree.value)
+    return array
+
+
+# Number 13
+
+
 
 # Number 20.1
 def maxSubsetSumNoAdjacent1(array):

@@ -308,4 +308,4 @@ def firstNonRepeatingCharacter(string):
         if val[1] == 1:
             return val[0]
     return -1
-print(firstNonRepeatingCharacter("aabbcccc"))
+print(firstNonRepeatingCharacter("ababc"))
