@@ -415,5 +415,180 @@ def maxSubsetSumNoAdjacent2(array):
 # print(maxSubsetSumNoAdjacent2([7, 10, 12, 7, 9, 14]))
 
 
+# Number 13
+def minHeightBst(array):
+    return callMinHeightBst(array, 0, len(array)-1)
+	
+def callMinHeightBst(array, start, end):
+	if start > end:
+		return
+	middle= (end+start)//2
+	tree= BST(array[middle])
+	tree.left= callMinHeightBst(array, start, middle-1)
+	tree.right= callMinHeightBst(array, middle+1, end)
+	return tree
+	
+class BST:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+    def insert(self, value):
+        if value < self.value:
+            if self.left is None:
+                self.left = BST(value)
+            else:
+                self.left.insert(value)
+        else:
+            if self.right is None:
+                self.right = BST(value)
+            else:
+                self.right.insert(value)
 
 
+# Number 14
+# This is an input class. Do not edit.
+class BST:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+def findKthLargestValueInBst(tree, k):
+	array= []
+	callFindKth(tree, k, array)
+	return array[len(array)-k]
+
+def callFindKth(tree, k, array):
+	if tree is None:
+		return
+	callFindKth(tree.left, k, array)
+	array.append(tree.value)
+	callFindKth(tree.right, k, array)
+	return array
+
+
+# Number 25
+def kadanesAlgorithm(array):
+    maxEndHere= array[0]
+    maxSoFar= array[0]
+    for i in range(1, len(array)):
+        maxEndHere+= array[i]
+        maxEndHere= max(maxEndHere, array[i])
+        maxSoFar= max(maxSoFar, maxEndHere)
+    return maxSoFar
+
+# print(kadanesAlgorithm([3, 5, -9, 1, 3, -2, 3, 4, 7, 2, -9, 6, 3, 1, -5, 4]))
+
+
+# Number 26
+def hasSingleCycle(array):
+    idxsSeen= set()
+    i= 0
+    while True:
+        newIdx= (i + array[i])%(len(array))
+        if newIdx not in idxsSeen:
+            idxsSeen.add(newIdx)
+        else:
+            return False
+        if len(idxsSeen) == len(array):
+            break
+        i= newIdx
+    return True
+    
+# print(hasSingleCycle([1, 2]))
+
+
+# Number 27 in progress
+# def riverSizes(matrix):
+#     riverLen= []
+#     riverIdxs= [[False for value in row] for row in matrix]
+#     count= 0
+#     nodeRow= 0
+#     nodeCol= 0
+#     i= 0
+#     j= 0
+#     while nodeRow < len(matrix):
+#         if riverIdxs[i][j] == False and matrix[i][j] == 1:
+#             riverIdxs[i][j]= True
+#             count+= 1
+#             if i+1 < len(matrix) and matrix[i+1][j] == 1 and riverIdxs[i+1][j] == False:
+#                 i+= 1
+#             elif i-1 >= 0 and matrix[i-1][j] == 1 and riverIdxs[i-1][j] == False:
+#                 i-= 1
+#             elif j+1 < len(matrix[i]) and matrix[i][j+1] == 1 and riverIdxs[i][j+1] == False:
+#                 j+= 1
+#             elif j-1 >= 0 and matrix[i][j-1] == 1 and riverIdxs[i][j-1] == False:
+#                 j-= 1
+#             else:
+#                 riverLen.append(count)
+#                 count= 0
+#                 if j+1 < len(matrix[i]):
+#                     nodeCol+=1
+#                     j= nodeCol
+#                     continue
+#                 elif j+1 == len(matrix[i]) and i+1 < len(matrix):
+#                     nodeRow+= 1
+#                     i= nodeRow
+#                     nodeCol= 0
+#                     j= nodeCol
+#                     continue
+#                 elif i+1 == len(matrix):
+#                     break
+#         if riverIdxs[i][j] == False and matrix[i][j] == 0:
+#             riverIdxs[i][j]= True
+#         if j+1 < len(matrix[i]):
+#             nodeCol+=1
+#             j+= 1
+#         elif j+1 == len(matrix[i]) and i+1 < len(matrix):
+#             nodeRow+= 1
+#             i+= 1
+#             nodeCol= 0
+#             j= 0
+#         elif i+1 == len(matrix):
+#             break
+#     return riverLen
+
+matrix1= [
+    [1, 0, 0, 1, 0],
+    [1, 0, 1, 0, 0],
+    [0, 0, 1, 0, 1],
+    [1, 0, 1, 0, 1],
+    [1, 0, 1, 1, 0]
+]
+# print(riverSizes(matrix1))
+
+
+
+# riverLen= []
+#     riverIdxs= [[False for value in row] for row in matrix]
+#     row= 0
+#     i= 0
+#     j= 0
+#     count= 0
+#     while row < len(matrix):
+#         i= row
+#         while j < len(matrix[i]):
+#             if matrix[i][j] == 1 and riverIdxs[i][j] == False:
+#                 riverIdxs[i][j] == True
+#                 count+= 1
+#                 if matrix[i+1][j] == 1 and matrix[i+1][j] is not None:
+#                     i+= 1
+#                     continue
+#                 elif matrix[i-1][j] == 1 and matrix[i-1][j] is not None:
+#                     i-= 1
+#                     continue
+#                 elif matrix[i][j+1] == 1 and matrix[i][j+1] is not None:
+#                     j+= 1
+#                     continue
+#                 elif matrix[i][j-1] == 1 and matrix[i][j-1] is not None:
+#                     j-= 1
+#                     continue
+#                 else:
+#                     riverLen.append(count)
+#                     count= 0
+#             else:
+#                 j+= 1
+#         row+= 1
+#     return riverLen
