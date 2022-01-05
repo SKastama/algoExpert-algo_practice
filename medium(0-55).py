@@ -499,6 +499,34 @@ def hasSingleCycle(array):
     
 # print(hasSingleCycle([1, 2]))
 
+# Number 50
+def longestPalindromicSubstring(string):
+    longPali= [0, 1]
+    for i in range(len(string)-1):
+        start= i
+        end= i
+        idx= 0
+        while start >= 0 and end < len(string):
+            if string[i-1] == string[i+1]:
+                start= i-1-idx
+                end= i+1+idx
+                idx+= 1
+            elif string[i] == string[i+1]:
+                start= i-idx
+                end= i+1+idx
+            if end-start > longPali[1]-longPali[0]:
+                longPali[0]= start
+                longPali[1]= end
+                break
+    return longPali
+
+print(longestPalindromicSubstring('abaxyzzyxf'))
+
+
+
+
+
+
 
 # Number 27 in progress
 # def riverSizes(matrix):
