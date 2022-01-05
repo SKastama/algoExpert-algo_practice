@@ -244,6 +244,10 @@ def mergeOverlappingIntervals(intervals):
 
 
 # Number 10- Uncompleted
+# Do not edit the class below except for
+# the insert, contains, and remove methods.
+# Feel free to add new properties and methods
+# to the class.
 class BST:
     def __init__(self, value):
         self.value = value
@@ -257,30 +261,28 @@ class BST:
                 if current.left is None:
                     current.left= BST(value)
                     break
-                else:
-                    current= current.left
+                current= current.left
             else:
                 if current.right is None:
                     current.right= BST(value)
                     break
-                else:
-                    current= current.right
+                current= current.right
         return self
 
     def contains(self, value):
         current= self
         while current is not None:
-            if current.value > value:
+            if current.value == value:
+                return True
+            elif current.value > value:
                 current= current.left
             elif current.value < value:
                 current= current.right
-            else:
-                return True
         return False
+            
 
-    def remove(self, value):
+    def remove(self, value, parent=None):
         current= self
-        parent= current
         while current is not None:
             if current.value > value:
                 parent= current
@@ -289,22 +291,20 @@ class BST:
                 parent= current
                 current= current.right
             else:
+                if current.right is not None and current.left is not None:
+                    runner= current
+                    runner= runner.right
+                    while runner is not None:
+                        runner= runner.left
+                    current.value= runner
+                    current.right.remove(current.value, current)
+                elif current.left is not None:
+                    current.value= current.left.value
+                    current.left.remove(current.value, current)
+                elif current.right is not None:
+                    current.value= current.right.value
+                    current.right.remove(current.value, current)
                 break
-        if current.left is None and current.right is None:
-            current= None
-        elif current.right is None:
-            current.value= current.left.value
-            current.left= None
-        elif current.left is None:
-            current.value= current.right.value
-            current.right= None
-        else:
-            bottomRight= current.right
-            while bottomRight.left is not None:
-                bottomRight= bottomRight.left
-            current.value= bottomRight.value
-            bottomRight.remove()
-        # Do not edit the return statement of this method.
         return self
 
 
