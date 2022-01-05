@@ -66,9 +66,9 @@ def solution1(parties, tables):
         j= 0
     return attendees
 
-# print(solution1(parties1, tables1))
-# print(solution1(parties2, tables2))
-# print(solution1(parties3, tables3))
+print(solution1(parties1, tables1))
+print(solution1(parties2, tables2))
+print(solution1(parties3, tables3))
 
 parties4= [
     {
