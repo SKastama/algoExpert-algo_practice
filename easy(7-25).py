@@ -239,6 +239,19 @@ def selectionSort(array):
 		pos+= 1
 	return array
 
+def selectionSort2(array):
+    pos= 0
+    while pos < len(array):
+        smallPos= pos
+        for i in range(pos, len(array)):
+            if array[i] < array[smallPos]:
+                smallPos= i
+        array[pos], array[smallPos] = array[smallPos], array[pos]
+        pos+= 1
+    return array
+
+# print(selectionSort2([3, 5, 2, 8]))
+
 # Number 21
 import math
 def isPalindrome(string):
@@ -320,4 +333,4 @@ def firstNonRepeatingCharacter(string):
         if val[1] == 1:
             return val[0]
     return -1
-print(firstNonRepeatingCharacter("ababc"))
+# print(firstNonRepeatingCharacter("ababc"))
