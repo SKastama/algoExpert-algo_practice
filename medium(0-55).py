@@ -520,9 +520,53 @@ def longestPalindromicSubstring(string):
                 break
     return longPali
 
-print(longestPalindromicSubstring('abaxyzzyxf'))
+# print(longestPalindromicSubstring('abaxyzzyxf'))
 
+def question1(string1, string2):
+    char2= set(string2)
+    output= ''
+    for i in range(len(string1)):
+        if string1[i] not in char2:
+            output+= string1[i]
+    return output
 
+# print(question1('Sarah', 'rh'))
+
+def question2(string):
+    charTable= {}
+    order= []
+    for i in range(len(string)):
+        if string[i] not in charTable:
+            charTable[string[i]]= 0
+            order.append(string[i])
+        charTable[string[i]]+= 1
+    for i in range(len(order)):
+        if charTable[order[i]] == 1:
+            return order[i]
+    return None
+
+# print(question2('aabbcgg'))
+
+def question3(string):
+    longest= 0
+    current= ''
+    i= 0
+    j= i
+    while i < len(string):
+        if j >= len(string):
+            i+= 1
+            j= i
+        elif string[j] in current:
+            longest= max(longest, len(current))
+            current= ''
+            i+=1
+            j=i
+        else:
+            current+= string[j]
+            j+= 1
+    return longest
+
+# print(question3("Sarah"))
 
 
 
