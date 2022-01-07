@@ -108,3 +108,54 @@ def solution2(parties, tables):
         i+= 1
         j= 0
     return attendees
+
+def superReducedString(s):
+    string= s
+    adjChar= False
+    while adjChar is False:
+        adjChar= True
+        for i in range(len(string)-1):
+            if string[i] == string[i+1]:
+                string= string[:i] + string[i+2:]
+                adjChar= False
+                break
+    if len(string) == 0:
+        return 'Empty String'
+    return string
+
+def camelcase(s):
+    # Initiate a count variable
+    if len(s) == 0:
+        return 0
+    count= 1
+    # Loop thru string once with for loop
+    for i in range(len(s)):
+        if s[i].isupper():
+            count+= 1
+    return count
+
+def minimumNumber(n, password):
+    # Return the minimum number of characters to make the password strong
+    special_characters = "!@#$%^&*()-+"
+    hashTable= {
+        'lower': False,
+        'upper': False,
+        'num': False,
+        'spChar': False
+    }
+    count= 0
+    for i in range(len(password)):
+        if password[i].islower():
+            hashTable['lower']= True
+        elif password[i].isupper():
+            hashTable['upper']= True
+        elif password[i].isnumeric():
+            hashTable['num']= True
+        elif password[i] in special_characters:
+            hashTable['spChar']=True
+    for val in hashTable.values():
+        if val == False:
+            count+= 1
+    if len(password)+count < 6:
+        count+= 6 - (len(password)+count)
+    return count
