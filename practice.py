@@ -66,9 +66,9 @@ def solution1(parties, tables):
         j= 0
     return attendees
 
-print(solution1(parties1, tables1))
-print(solution1(parties2, tables2))
-print(solution1(parties3, tables3))
+# print(solution1(parties1, tables1))
+# print(solution1(parties2, tables2))
+# print(solution1(parties3, tables3))
 
 parties4= [
     {
@@ -159,3 +159,43 @@ def minimumNumber(n, password):
     if len(password)+count < 6:
         count+= 6 - (len(password)+count)
     return count
+
+
+def caesarCipher(s, k):
+    # initalize alphabet characters
+    alphabet= 'abcdefghijklmnopqrstuvwxyz'
+    output= ''
+    # for loop
+    for i in range(len(s)):
+        if s[i].isalpha() is False:
+            output+= s[i]
+            continue
+        if s[i].isupper():
+            alphaIdx= alphabet.find(s[i].lower())
+        else:
+            alphaIdx= alphabet.find(s[i])
+        shiftIdx= (alphaIdx+k)%26
+        if s[i].isupper():
+            output+= alphabet[shiftIdx].upper()
+            continue
+        output+= alphabet[shiftIdx]
+    return output
+
+# print(caesarCipher('middle-Outz', 2))
+
+def hackerrankInString(s):
+    '''String as input, returns yes or no if a subsequence within its string spell out      hackerrank'''
+    # initailise our comparisn string hackerrank
+    compareStr= 'hackerrank'
+    i= 0
+    j= 0
+    # initate a while loop
+    while i < len(s):
+        if s[i] == compareStr[j]:
+            j+= 1
+        if j == len(compareStr):
+            return 'Yes'
+        i+= 1
+    return 'No'
+
+print(hackerrankInString('hereiamstackerrank'))
