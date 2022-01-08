@@ -198,4 +198,47 @@ def hackerrankInString(s):
         i+= 1
     return 'No'
 
-print(hackerrankInString('hereiamstackerrank'))
+# print(hackerrankInString('hereiamstackerrank'))
+
+def pangrams(s):
+    '''Recieves a string as an input and returns boolean stating if the string is a pangram'''
+    # initiate a set variable
+    alphabet_set= set()
+    for i in range(len(s)):
+        alphabet_set.add(s[i].lower())
+    if len(alphabet_set)-1 == 26:
+        return 'pangram'
+    return 'not pangram'
+
+# print(pangrams('We promptly judged antique ivory buckles for the next prize'))
+# print(pangrams('We promptly judged antique ivory buckles for the prize'))
+
+def weightedUniformStrings(s, queries):
+    '''Takes a string and a query of integers as an input, returns if the weight of characters eqauls an integer within the query array'''
+    # Create a output array
+    string_weights= []
+    output= []
+    current= ''
+    # Create alphabet string
+    alphabet= 'abcdefghijklmnopqrstuvqxyz'
+    i= 0
+    # weigth of characters
+    current_weight= 0
+    # initiate while loop
+    while i < len(s):
+        if s[i] not in current:
+            current= ''
+            current_weight= 0
+        alpha_idx= alphabet.find(s[i])
+        current_weight+= alpha_idx + 1
+        string_weights.append(current_weight)
+        current+= s[i]
+        i+=1
+    for j in range(len(queries)):
+        if queries[j] in string_weights:
+            output.append('Yes')
+        else:
+            output.append('No')
+    return output
+
+print(weightedUniformStrings('abccddde', [6, 1, 3, 12, 5, 9, 10]))
