@@ -496,8 +496,9 @@ def hasSingleCycle(array):
             break
         i= newIdx
     return True
-    
+
 # print(hasSingleCycle([1, 2]))
+
 
 # Number 50
 def longest_palindromic_substring(string):
@@ -521,6 +522,22 @@ def call_longest_palidrome(start, end, string):
     return [start + 1, end]
 
 # print(longest_palindromic_substring('abaxyzzyxf'))
+
+
+def group_anagrams(words):
+    hashTable= {}
+    output= []
+    for i in range(len(words)):
+        sortedWord= ''.join(sorted(words[i]))
+        if sortedWord in hashTable:
+            hashTable[sortedWord].append(words[i])
+        else:
+            hashTable[sortedWord]= [words[i]]
+    for val in hashTable.values():
+        output.append(val)
+    return output
+
+print(group_anagrams(["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]))
 
 
 
