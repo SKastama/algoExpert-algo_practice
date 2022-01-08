@@ -241,4 +241,4 @@ def weightedUniformStrings(s, queries):
             output.append('No')
     return output
 
-print(weightedUniformStrings('abccddde', [6, 1, 3, 12, 5, 9, 10]))
+# print(weightedUniformStrings('abccddde', [6, 1, 3, 12, 5, 9, 10]))

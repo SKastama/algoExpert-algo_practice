@@ -500,27 +500,30 @@ def hasSingleCycle(array):
 # print(hasSingleCycle([1, 2]))
 
 # Number 50
-def longestPalindromicSubstring(string):
-    longPali= [0, 1]
-    for i in range(len(string)-1):
-        start= i
-        end= i
-        idx= 0
-        while start >= 0 and end < len(string):
-            if string[i-1] == string[i+1]:
-                start= i-1-idx
-                end= i+1+idx
-                idx+= 1
-            elif string[i] == string[i+1]:
-                start= i-idx
-                end= i+1+idx
-            if end-start > longPali[1]-longPali[0]:
-                longPali[0]= start
-                longPali[1]= end
-                break
-    return longPali
+def longest_palindromic_substring(string):
+    indexes= [0, 0]
+    for idx in range(len(string)):
+        odd= call_longest_palidrome(idx - 1, idx + 1, string)
+        even= call_longest_palidrome(idx, idx + 1, string)
+        current_longest= max(odd, even, key= lambda x: x[1] - x[0])
+        example= max(odd[1] - odd[0], even[1] - even[0])
+        print(current_longest)
+        indexes= max(indexes, current_longest, key= lambda x: x[1] - x[0])
+    return string[indexes[0]:indexes[1]]
 
-# print(longestPalindromicSubstring('abaxyzzyxf'))
+
+def call_longest_palidrome(start, end, string):
+    while start >= 0 and end < len(string):
+        if string[start] != string[end]:
+            break
+        start-= 1
+        end+= 1
+    return [start + 1, end]
+
+# print(longest_palindromic_substring('abaxyzzyxf'))
+
+
+
 
 def question1(string1, string2):
     char2= set(string2)
