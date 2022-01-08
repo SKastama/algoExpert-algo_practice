@@ -242,3 +242,50 @@ def weightedUniformStrings(s, queries):
     return output
 
 # print(weightedUniformStrings('abccddde', [6, 1, 3, 12, 5, 9, 10]))
+
+
+
+
+
+def firstNonRepeatingCharacter(string):
+    '''Given a string as input where we are returning the first non-repeated character'''
+    characteres_seen= {}
+    order_arr= []
+    # Initalize a for loop to count how many times a character is seen
+    for i in range(len(string)):
+        if string[i] not in characteres_seen:
+            characteres_seen[string[i]]= 0
+            order_arr.append(string[i])
+        characteres_seen[string[i]]+= 1
+    # Initlize a for loop to find values in dicitonary
+    for i in range(len(order_arr)):
+        if characteres_seen[order_arr[i]] == 1:
+            return order_arr[i]
+    return None
+
+# print(firstNonRepeatingCharacter("abbcdcaf"))
+
+def longestSubstringWithoutDuplication(string):
+    '''Given a string as input, we return the longest substring without duplicates'''
+    longest_substring= ''
+    # initalize a string called current that represnts the current substring we are inerating over
+    current= ''
+    i= 0
+    j= i
+    while i < len(string):
+        if j == len(string):
+            i+= 1
+            j= i
+        # check if element is in current string
+        elif string[j] in current:
+            if len(current) > len(longest_substring):
+                longest_substring= current
+            current= ''
+            i+= 1
+            j= i
+        else:
+            current+= string[j]
+            j+= 1
+    return longest_substring
+
+print(longestSubstringWithoutDuplication("clementisacap"))

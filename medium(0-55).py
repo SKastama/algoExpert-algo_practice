@@ -537,7 +537,52 @@ def group_anagrams(words):
         output.append(val)
     return output
 
-print(group_anagrams(["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]))
+# print(group_anagrams(["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]))
+
+def reverseWordsInString(string):
+    output= []
+    output2= []
+    startIdx= 0
+    for i in range(len(string)):
+        if i + 1 == len(string):
+            output.append(string[startIdx:len(string)])
+        elif string[i] == ' ':
+            output.append(string[startIdx:i])
+            startIdx= i + 1
+    for i in range(len(output)-1, -1, -1):
+        output2.append(output[i])
+    return ' '.join(output2)
+
+# print(reverseWordsInString("AlgoExpert is the best!"))
+
+
+def patternMatcher(pattern, string):
+    '''Recieves 2 strings as an input, where it returns substrings within inputed string that represent x and y'''
+    # 	Initlaize output array
+    outputArr= []
+    # 	Initilize x and y variables
+    x= ''
+    y= ''
+    current= ''
+    for i in range(len(string)):		
+        current+= string[i]
+        amount_seen= string.count(current)
+        variable_not_found= x if x == '' or len(x) <= amount_seen else y
+        if amount_seen == pattern.count(variable_not_found):
+            variable_not_found= current
+            current= ''
+    return [x, y]
+
+pattern1= "xxyxxy"
+string1= "gogopowerrangergogopowerranger"
+
+
+# print(patternMatcher(pattern1, string1))
+
+
+
+
+
 
 
 
