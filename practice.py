@@ -288,4 +288,21 @@ def longestSubstringWithoutDuplication(string):
             j+= 1
     return longest_substring
 
-print(longestSubstringWithoutDuplication("clementisacap"))
+# print(longestSubstringWithoutDuplication("clementisacap"))
+
+
+def twoStrings(s1, s2):
+    '''Two string as inputs, where we are returning a substring that is contained in each inputed strings'''
+    # inilize output string to store shared subsequence
+    shared_subsequence= ''
+    i= 0
+    for i in range(len(s1)):
+        # check if s1[i] is in s2
+        if s1[i] not in s2:
+            continue
+        # add the s1[i] element to our shared_subsequence
+        shared_subsequence+= s1[i]
+    # check if shared subsequence is filled
+    output= 'YES' if len(shared_subsequence) > 0 else 'NO'
+    return output
+
