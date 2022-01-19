@@ -579,8 +579,32 @@ string1= "gogopowerrangergogopowerranger"
 
 # print(patternMatcher(pattern1, string1))
 
+# Find succeser question
+# This is an input class. Do not edit.
+class BinaryTree:
+    def __init__(self, value, left=None, right=None, parent=None):
+        self.value = value
+        self.left = left
+        self.right = right
+        self.parent = parent
 
 
+def findSuccessor(tree, node):
+    if node.right is not None:
+		return leftChild(node.right)
+	return rightParent(node)
+
+def leftChild(node):
+	current= node
+	while current.left is not None:
+		current= current.left
+	return current
+
+def rightParent(node):
+	current= node
+	while current.parent is not None and current.parent.right == current:
+		current= current.parent
+	return current.parent
 
 
 
