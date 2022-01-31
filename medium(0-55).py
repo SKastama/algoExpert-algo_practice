@@ -591,8 +591,8 @@ class BinaryTree:
 
 def findSuccessor(tree, node):
     if node.right is not None:
-		return leftChild(node.right)
-	return rightParent(node)
+        return leftChild(node.right)
+    return rightParent(node)
 
 def leftChild(node):
 	current= node

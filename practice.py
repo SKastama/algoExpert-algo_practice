@@ -306,3 +306,48 @@ def twoStrings(s1, s2):
     output= 'YES' if len(shared_subsequence) > 0 else 'NO'
     return output
 
+
+def longestAnagram(array):
+    anagramHash= {}
+    longest= []
+    for i in range(len(array)):
+        sortedAnagram= ''.join(sorted(array[i]))
+        if sortedAnagram not in anagramHash:
+            anagramHash[sortedAnagram]= [array[i]]
+        else:
+            anagramHash[sortedAnagram].append(array[i])
+    for key in anagramHash.keys():
+        if len(longest) == 0:
+            longest= anagramHash[key]
+        elif len(key) == len(longest[0]):
+            longest.append(anagramHash[key])
+        elif len(key) > len(longest[0]):
+            longest= anagramHash[key]
+    return longest
+
+# print(longestAnagram(["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]))
+
+
+def longestSequence(words, characters):
+    longest= []
+    charIdx= 0
+    idx= 0
+    while idx < len(words):
+        for i in range(len(words[idx])):
+            if charIdx == len(characters):
+                break
+            if words[idx][i] == characters[charIdx]:
+                charIdx+= 1
+        if charIdx == len(characters):
+            if len(longest) == 0:
+                longest= [words[idx]]
+            if len(words[idx]) == len(longest[0]):
+                longest.append(words[idx])
+            elif len(words[idx]) > len(longest[0]):
+                longest= [words[idx]]
+        charIdx= 0
+        idx+= 1
+    return longest
+
+print(longestSequence(['hello', 'ghelloo', 'ghelloo', 'ee'], 'hello'))
+
