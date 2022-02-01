@@ -349,5 +349,14 @@ def longestSequence(words, characters):
         idx+= 1
     return longest
 
-print(longestSequence(['hello', 'ghelloo', 'ghelloo', 'ee'], 'hello'))
+# print(longestSequence(['hello', 'ghelloo', 'ghelloo', 'ee'], 'hello'))
 
+
+def staircase(n):
+    output= ''
+    for i in range(n + 1):
+        elements= '#' * i
+        output+= '{} \n'.format(elements)
+    return output
+
+print(staircase(6))
