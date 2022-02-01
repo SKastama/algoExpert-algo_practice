@@ -359,4 +359,13 @@ def staircase(n):
         output+= '{} \n'.format(elements)
     return output
 
-print(staircase(6))
+# print(staircase(6))
+
+def diagonalDifference(arr):
+    sumLR= 0
+    sumRL= 0
+    for i in range(len(arr)):
+        sumLR+= arr[i][i]
+        sumRL+= arr[len(arr) - 1 - i][i]
+    absDif= abs(sumLR - sumRL)
+    return absDif

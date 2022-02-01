@@ -657,7 +657,15 @@ def question3(string):
 
 # print(question3("Sarah"))
 
-
+def taskAssignment(k, tasks):
+    output= []
+    newArray= []
+    for i in range(len(tasks)):
+        newArray.append([tasks[i], i])
+    newArray.sort()
+    for i in range(len(newArray)//2):
+        output.append([newArray[i][1], newArray[len(newArray) - 1 - i][1]])
+    return output
 
 
 
