@@ -369,3 +369,15 @@ def diagonalDifference(arr):
         sumRL+= arr[len(arr) - 1 - i][i]
     absDif= abs(sumLR - sumRL)
     return absDif
+
+
+# # First way
+# def recursive_sort(inputed_list, key= 0, sortedList= []):
+#     sortedList.append(value)
+#     recursive_sort(inputed_list, key, sortedList)
+#     return sortedList
+
+# # Second way
+# def recursive_sort(inputed_list, key= 0):
+#     # Stuff
+#     return recursive_sort(inputed_list, key)
