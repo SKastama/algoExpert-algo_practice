@@ -36,10 +36,10 @@ class BinaryTree:
 
 def branchSums(root):
     sums= []
-    branchSumsCall(root, sums, 0)
+    branchSumsCall(root, sums)
     return sums
 
-def branchSumsCall(root, sums, runningSum):
+def branchSumsCall(root, sums, runningSum=0):
     runningSum += root.value
     if (root.left == None and root.right == None):
         sums.append(runningSum)
