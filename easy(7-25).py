@@ -47,6 +47,29 @@ def branchSumsCall(root, sums, runningSum=0):
     branchSumsCall(root.left, sums, runningSum)
     branchSumsCall(root.right, sums, runningSum)
 
+# Number 7.2
+# This is the class of the input root. Do not edit it.
+class BinaryTree:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def branchSums2(root):
+    sums= []
+    branchSumsCall2(root, sums, 0)
+    return sums
+
+def branchSumsCall2(root, sums, runningSum):
+    if root == None:
+        return
+    runningSum += root.value
+    if (root.left == None and root.right == None):
+        sums.append(runningSum)
+        return 
+    branchSumsCall2(root.left, sums, runningSum)
+    branchSumsCall2(root.right, sums, runningSum) 
+
 # Number 8
 def nodeDepths(node, depth = 0):
     if (node == None):
